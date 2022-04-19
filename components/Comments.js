@@ -1,8 +1,9 @@
-import { fetchCusdisLang } from '@/lib/cusdisLang'
+import { useEffect, fetchCusdisLang } from '@/lib/cusdisLang'
 import BLOG from '@/blog.config'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import 'gitalk/dist/gitalk.css'
+import { useTheme } from 'next-themes'
 
 const GitalkComponent = dynamic(
   () => {
@@ -25,6 +26,14 @@ const CusdisComponent = dynamic(
 
 const Comments = ({ frontMatter }) => {
   const router = useRouter()
+  const { theme } = useTheme()
+  const cusdisTheme = theme === 'dark' ? 'dark' : 'light'
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.CUSDIS) {
+      window.CUSDIS.setTheme(cusdisTheme)
+    }
+  }, [cusdisTheme])
   return (
     <div>
       {BLOG.comment && BLOG.comment.provider === 'gitalk' && (
@@ -53,7 +62,7 @@ const Comments = ({ frontMatter }) => {
             pageId: frontMatter.id,
             pageTitle: frontMatter.title,
             pageUrl: BLOG.link + router.asPath,
-            theme: BLOG.appearance
+            theme: 'auto'
           }}
         />
       )}

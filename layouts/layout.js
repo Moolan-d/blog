@@ -7,6 +7,7 @@ import formatDate from '@/lib/formatDate'
 import { useLocale } from '@/lib/locale'
 import { useRouter } from 'next/router'
 import Comments from '@/components/Comments'
+import { useTheme } from 'next-themes'
 
 const mapPageUrl = id => {
   return 'https://www.notion.so/' + id.replace(/-/g, '')
@@ -21,6 +22,7 @@ const Layout = ({
 }) => {
   const locale = useLocale()
   const router = useRouter()
+  const { theme } = useTheme()
   return (
     <Container
       layout="blog"
@@ -75,6 +77,7 @@ const Layout = ({
                 collection: Collection,
                 collectionRow: CollectionRow
               }}
+              darkMode={theme === 'dark'}
               mapPageUrl={mapPageUrl}
             />
           </div>

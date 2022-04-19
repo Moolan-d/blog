@@ -6,6 +6,7 @@ import '@/styles/notion.css'
 import BLOG from '@/blog.config'
 import dynamic from 'next/dynamic'
 import { LocaleProvider } from '@/lib/locale'
+import { ThemeProvider } from 'next-themes'
 import Scripts from '@/components/Scripts'
 
 const Ackee = dynamic(() => import('@/components/Ackee'), { ssr: false })
@@ -24,7 +25,9 @@ function MyApp ({ Component, pageProps }) {
             />
           )}
           {BLOG.isProd && BLOG?.analytics?.provider === 'ga' && <Gtag />}
-          <Component {...pageProps} />
+          <ThemeProvider attribute='class'>
+            <Component {...pageProps} />
+          </ThemeProvider>
         </>
       </LocaleProvider>
     </>
