@@ -1,4 +1,4 @@
-import {useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import BLOG from '@/blog.config'
 import { useLocale } from '@/lib/locale'
@@ -104,11 +104,13 @@ const Header = ({ navBarTitle, fullWidth }) => {
             title={`Toggle dark mode - current ${theme}`}
             className='hover:text-blue-400 cursor-pointer text-xl'
           >
-            {hasMounted && theme === 'dark' ? (
+            {hasMounted && theme === 'dark'
+              ? (
               <IoMoonSharp />
-            ) : (
+                )
+              : (
               <IoSunnyOutline />
-            )}
+                )}
           </a>
         </div>
       </div>
