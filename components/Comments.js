@@ -1,4 +1,5 @@
-import { useEffect, fetchCusdisLang } from '@/lib/cusdisLang'
+import { useEffect } from 'react'
+import { fetchCusdisLang } from '@/lib/cusdisLang'
 import BLOG from '@/blog.config'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'

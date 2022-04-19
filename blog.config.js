@@ -3,7 +3,7 @@ const BLOG = {
   author: 'Ryan',
   email: 'mikey.sgjaz@gmail.com',
   link: 'https://moolan.site',
-  description: 'This gonna be an awesome website.',
+  description: 'develop logs',
   lang: 'en-US', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
   appearance: 'auto', // ['light', 'dark', 'auto'],
   font: 'sans-serif', // ['sans-serif', 'serif']
