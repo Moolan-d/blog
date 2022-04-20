@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
+import { IconContext } from 'react-icons'
 import BLOG from '@/blog.config'
 import CJK from '@/lib/cjk'
 class MyDocument extends Document {
@@ -9,10 +10,8 @@ class MyDocument extends Document {
 
   render () {
     return (
-      <Html
-        lang={BLOG.lang}
-        className={BLOG.appearance === 'dark' ? 'dark' : undefined}
-      >
+      <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}>
+      <Html lang={BLOG.lang}>
         <Head>
           {BLOG.font && BLOG.font === 'serif'
             ? (
@@ -105,6 +104,7 @@ class MyDocument extends Document {
           <NextScript />
         </body>
       </Html>
+      </IconContext.Provider>
     )
   }
 }
